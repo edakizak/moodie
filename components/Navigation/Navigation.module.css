@@ -1,0 +1,9 @@
+.navigation {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  height: 100px;
+}

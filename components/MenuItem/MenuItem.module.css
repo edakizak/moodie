@@ -1,4 +1,17 @@
+.menuItem {
+  display: flex;
+  align-items: center;
+}
+
 .link {
   color: white;
   text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+.link:hover {
+  text-decoration: underline;
+}
+
+.image {
+  margin: 15px;
 }
