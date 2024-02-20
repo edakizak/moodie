@@ -1,0 +1,30 @@
+/* components/MovieDetails/MovieDetails.module.css */
+.detailsContainer {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.overview {
+  color: #666;
+  line-height: 1.6;
+}
+
+.info {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.genres {
+  margin-top: 5px;
+  color: #007bff;
+}
