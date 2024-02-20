@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchBox from "../../components/SearchBox/SearchBox";
+import Card from "../../components/Card/Card";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -17,13 +18,7 @@ export default function Home() {
       <SearchBox onSearch={searchMovies} />
       <ul>
         {movies.map((movie) => (
-          <li key={movie.id}>
-            <h3>{movie.title}</h3>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-            />
-          </li>
+          <Card key={movie.id} movie={movie} />
         ))}
       </ul>
     </div>
