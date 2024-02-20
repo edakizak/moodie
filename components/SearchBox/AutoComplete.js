@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const AutoComplete = ({ results }) => {
+export default function AutoComplete({ results }) {
   return (
     <ul>
       {results.map((movie) => (
@@ -22,6 +22,4 @@ const AutoComplete = ({ results }) => {
       ))}
     </ul>
   );
-};
-
-export default AutoComplete;
+}

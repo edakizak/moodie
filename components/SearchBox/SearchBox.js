@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 // import AutoComplete from "./AutoComplete";
+import styles from "./SearchBox.module.css";
+import { CiSearch } from "react-icons/ci";
 
-const SearchBox = ({ onSearch }) => {
+export default function SearchBox({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = async (event) => {
@@ -10,16 +12,17 @@ const SearchBox = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSearch}>
+    <form onSubmit={handleSearch} className={styles.form}>
       <input
+        className={styles.input}
         type="text"
         placeholder="Search for a movie..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button type="submit">Search</button>
+      <button className={styles.button} type="submit">
+        <CiSearch />
+      </button>
     </form>
   );
-};
-
-export default SearchBox;
+}
