@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import AutoComplete from "./AutoComplete";
 
-const SearchBox = ({ onSearch }) => {
+export default function SearchBox({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = async (event) => {
@@ -20,6 +20,4 @@ const SearchBox = ({ onSearch }) => {
       <button type="submit">Search</button>
     </form>
   );
-};
-
-export default SearchBox;
+}
