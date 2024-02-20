@@ -5,7 +5,9 @@ export default function Card({ movie }) {
   const releaseYear = movie.release_date
     ? movie.release_date.split("-")[0]
     : "Unknown";
-  const genres = movie.genres ? movie.genres.join(", ") : "No Genre";
+  const genreNames = movie.genres
+    ? movie.genres.map((genre) => genre.name).join(", ")
+    : "No Genre";
   return (
     <li key={movie.id} className={styles.cardContainer}>
       <div className={styles.cardImageWrapper}>
@@ -18,7 +20,7 @@ export default function Card({ movie }) {
         <div className={styles.cardContent}>
           <h3 className={styles.cardTitle}>{movie.title}</h3>
           <p className={styles.cardInfo}>
-            {releaseYear} | {genres}
+            {releaseYear} | {genreNames}
           </p>
         </div>
       </div>

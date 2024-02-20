@@ -1,0 +1,29 @@
+/* components/MovieDetails/MovieDetails.module.css */
+.detailsContainer {
+  background-color: #fff;
+  padding: 20px;
+  margin-left: 10px; /* Sol taraftaki Card komponentinden boşluk bırak */
+  flex: 1;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.overview {
+  color: #666;
+  line-height: 1.6;
+}
+
+.info {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.genres {
+  margin-top: 5px;
+  color: #007bff;
+}

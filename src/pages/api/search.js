@@ -1,22 +1,3 @@
-// import { useEffect } from "react";
-
-// const API_KEY = process.env.API_KEY;
-
-// export default function Movies() {
-//   useEffect(() => {
-//     async function fetchData() {
-//       const res = await fetch(
-//         `https://api.themoviedb.org/3/movie/11?api_key=${API_KEY}`
-//       );
-//       const data = await res.json();
-//       console.log("data:", data);
-//     }
-//     console.log("hi");
-//     fetchData();
-//   });
-//   return <> </>;
-// }
-
 import fetch from "node-fetch";
 
 export default async function handler(req, res) {
