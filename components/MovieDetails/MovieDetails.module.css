@@ -2,7 +2,7 @@
 .detailsContainer {
   background-color: #fff;
   padding: 20px;
-  margin-left: 20px; /* Sol taraftaki Card komponentinden boşluk bırak */
+  margin-left: 10px; /* Sol taraftaki Card komponentinden boşluk bırak */
   flex: 1;
   overflow-y: auto;
 }
