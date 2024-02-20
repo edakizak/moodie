@@ -1,21 +1,31 @@
-// const API_KEY = process.env.API_KEY;
+import { useState } from "react";
+import SearchBox from "../../components/SearchBox/SearchBox";
 
-export default async function Home(searchParams) {
-  // const genre = searchParams.genre || "fetchTrending";
+export default function Home() {
+  const [movies, setMovies] = useState([]);
 
-  // const res = await fetch(
-  //   `https://api.themoviedb.org/3/${
-  //     genre === "fetchTopRated" ? "movie/top_rated" : "trending/all/week"
-  //   }?api_key=${API_KEY}&language=en-US&page=1`,
-  //   { next: { revalidate: 10000 } }
-  // );
+  const searchMovies = async (searchTerm) => {
+    const response = await fetch(
+      `/api/search?query=${encodeURIComponent(searchTerm)}`
+    );
+    const data = await response.json();
+    setMovies(data.results);
+  };
 
-  // if (!res.ok) {
-  //   throw new Error("Fail!");
-  // }
-
-  // const data = await res.json();
-  // const results = data.results;
-  // console.log("results:", results);
-  return <div>hi</div>;
+  return (
+    <div>
+      <SearchBox onSearch={searchMovies} />
+      <ul>
+        {movies.map((movie) => (
+          <li key={movie.id}>
+            <h3>{movie.title}</h3>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
