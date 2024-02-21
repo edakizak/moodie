@@ -19,9 +19,7 @@ export default function Card({ movie }) {
         />
         <div className={styles.cardContent}>
           <h3 className={styles.cardTitle}>{movie.title}</h3>
-          <p className={styles.cardInfo}>
-            {releaseYear} | {genreNames}
-          </p>
+          <p className={styles.cardInfo}>{releaseYear}</p>
         </div>
       </div>
     </li>
