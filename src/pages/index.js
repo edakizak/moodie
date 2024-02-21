@@ -3,6 +3,7 @@ import SearchBox from "../../components/SearchBox/SearchBox";
 import Card from "../../components/Card/Card";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
 import styles from "../../components/Card/Card.module.css";
+import PrevButton from "../../components/Button/PrevButton";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -48,9 +49,7 @@ export default function Home() {
     <div>
       <SearchBox onSearch={searchMovies} />
       <div style={{ display: "flex", marginTop: "20px" }}>
-        <button onClick={handlePrev} disabled={activeIndex === 0}>
-          Prev
-        </button>
+        <PrevButton onClick={handlePrev} disabled={activeIndex === 0} />
         <ul
           style={{
             display: "flex",
