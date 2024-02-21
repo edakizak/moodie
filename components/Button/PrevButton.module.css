@@ -1,4 +1,4 @@
-.nextbutton {
+.prevbutton {
   background-color: white;
   border: none;
   border-radius: 50%;
@@ -13,16 +13,16 @@
   transition: background-color 0.3s ease;
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
 }
-.nextbutton:hover {
+.prevbutton:hover {
   background-color: #e7f3ff;
 }
 
-.nextbutton:disabled {
+.prevbutton:disabled {
   color: grey;
   cursor: not-allowed;
   box-shadow: none;
 }
 
-.nextbutton:disabled:hover {
+.prevbutton:disabled:hover {
   background-color: white;
 }
