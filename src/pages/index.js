@@ -8,28 +8,29 @@ export default function Home() {
   const [movies, setMovies] = useState([]);
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0); // Carousel state
-
+  const [activeMovie, setActiveMovie] = useState(null);
   const searchMovies = async (searchTerm) => {
     const response = await fetch(
       `/api/search?query=${encodeURIComponent(searchTerm)}`
     );
     const data = await response.json();
     setMovies(data.results);
-    setSelectedMovieDetails(null); // Yeni aramada detayları temizle
+    setSelectedMovieDetails(null);
   };
 
-  const fetchMovieDetails = async (movieId) => {
+  const fetchMovieDetails = async (movieId, idx) => {
     const response = await fetch(`/api/movie/${movieId}`);
     const details = await response.json();
     setSelectedMovieDetails(details);
+    setActiveMovie(idx);
   };
 
   useEffect(() => {
     console.log("Selected movie details updated:", selectedMovieDetails);
   }, [selectedMovieDetails]);
 
-  const cardWidth = 300; // Card'ın genişliği
-  const cardMargin = 20; // Card arasındaki margin
+  const cardWidth = 300;
+  const cardMargin = 20;
 
   const handlePrev = () => {
     // Carousel Prev
@@ -54,29 +55,33 @@ export default function Home() {
           style={{
             display: "flex",
             padding: 0,
-            marginLeft: `-${activeIndex * (cardWidth + cardMargin * 2)}px`, // Carousel kaydırma
+            marginLeft: `-${activeIndex * (cardWidth + cardMargin * 2)}px`, // Carousel slide
             transition: "margin-left 0.5s",
             overflowY: "hidden",
           }}
         >
-          {movies.map((movie) => (
-            <li
-              key={movie.id}
-              className={styles.cardContainer}
-              onClick={() => fetchMovieDetails(movie.id)}
-              style={{
-                marginRight: `${cardMargin}px`,
-                flex: "0 0 auto",
-                width: `${cardWidth}px`,
-                cursor: "pointer",
-              }}
-            >
-              <Card key={movie.id} movie={movie} />
-              {selectedMovieDetails && (
-                <MovieDetails movie={selectedMovieDetails} />
-              )}
-            </li>
-          ))}
+          {movies.map((movie, idx) => {
+            console.log("selectedMovieDetails", selectedMovieDetails);
+            console.log("index", idx);
+            return (
+              <li
+                key={movie.id}
+                className={styles.cardContainer}
+                onClick={() => fetchMovieDetails(movie.id, idx)}
+                style={{
+                  marginRight: `${cardMargin}px`,
+                  flex: "0 0 auto",
+                  width: `${cardWidth}px`,
+                  cursor: "pointer",
+                }}
+              >
+                <Card key={movie.id} movie={movie} />
+                {activeMovie === idx && selectedMovieDetails && (
+                  <MovieDetails movie={selectedMovieDetails} />
+                )}
+              </li>
+            );
+          })}
         </ul>
         <button
           onClick={handleNext}
