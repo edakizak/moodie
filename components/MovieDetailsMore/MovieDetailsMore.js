@@ -16,7 +16,14 @@ export default function MovieDetailsMore({ movie }) {
           {movie.genres?.map((genre) => genre.name).join(", ")}
         </span>
       </p>
-
+      <p>
+        <strong>Runtime:</strong>
+        {movie.runtime}
+      </p>
+      <p>
+        <strong>Imdb Rate:</strong>
+        {movie.vote_average}
+      </p>
       <p className={styles.overview}>{movie.overview}</p>
     </div>
   );

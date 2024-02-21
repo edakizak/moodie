@@ -8,17 +8,20 @@ export default function DetailsMore() {
   const { id } = router.query;
   const [movieDetailsMore, setMovieDetailsMore] = useState(null);
 
+  console.log(id);
+
   useEffect(() => {
-    const fetchMovieDetailsMore = async () => {
+    const fetchMovieDetailsMore = async (movieId) => {
       if (id) {
-        const response = await fetch(`/api/movies/${id}`);
+        const response = await fetch(`/api/movie/${movieId}`);
         const data = await response.json();
         setMovieDetailsMore(data);
       }
     };
-
-    fetchMovieDetailsMore();
+    fetchMovieDetailsMore(id);
   }, [id]);
+
+  console.log("fetchMovieDetailsMore", movieDetailsMore);
 
   if (!movieDetailsMore) {
     return <p>Loading...</p>;
