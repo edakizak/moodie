@@ -5,12 +5,12 @@
   /* border: 1px solid #ddd; */
   border-radius: 8px;
   /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   flex: 0 1 300px;
 }
 
 .cardContainer:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
 .cardTitle {
@@ -51,7 +51,9 @@
   margin: 5px 0 0;
 }
 
-.cardSelected {
-  transform: scale(0.9); /* Seçildiğinde küçült */
-  flex: 0 1 200px; /* Seçildiğinde daha fazla küçülme */
+.cardSelected,
+.cardContainer:hover {
+  transform: scale(
+    1.05
+  ); /* Kart seçildiğinde veya üzerine gelindiğinde büyüt */
 }
