@@ -1,8 +1,13 @@
 import { GrNext } from "react-icons/gr";
+import styles from "./NextButton.module.css";
 
-export default function PrevButton() {
+export default function NextButton({ handleNext, disabled }) {
   return (
-    <button>
+    <button
+      onClick={handleNext}
+      disabled={disabled}
+      className={styles.nextbutton}
+    >
       <GrNext />
     </button>
   );
