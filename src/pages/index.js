@@ -4,6 +4,7 @@ import Card from "../../components/Card/Card";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
 import styles from "../../components/Card/Card.module.css";
 import PrevButton from "../../components/Button/PrevButton";
+import NextButton from "../../components/Button/NextButton";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -30,26 +31,37 @@ export default function Home() {
     console.log("Selected movie details updated:", selectedMovieDetails);
   }, [selectedMovieDetails]);
 
-  const cardWidth = 300;
+  const cardWidth = 500;
   const cardMargin = 20;
 
   const handlePrev = () => {
     // Carousel Prev
+    console.log("Prev clicked");
     setActiveIndex((prevActiveIndex) => Math.max(prevActiveIndex - 1, 0));
   };
 
   const handleNext = () => {
     // Carousel Next
     setActiveIndex((nextActiveIndex) =>
-      Math.min(nextActiveIndex + 1, movies.length - 3)
+      Math.min(nextActiveIndex + 1, movies.length - 2)
     );
   };
 
   return (
     <div>
       <SearchBox onSearch={searchMovies} />
-      <div style={{ display: "flex", marginTop: "20px" }}>
-        <PrevButton onClick={handlePrev} disabled={activeIndex === 0} />
+      <div style={{ display: "flex", marginTop: "20px", position: "relative" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: 0,
+            transform: "translateY(-50%)",
+            zIndex: 2,
+          }}
+        >
+          <PrevButton handlePrev={handlePrev} disabled={activeIndex === 0} />
+        </div>
         <ul
           style={{
             display: "flex",
@@ -57,6 +69,8 @@ export default function Home() {
             marginLeft: `-${activeIndex * (cardWidth + cardMargin * 2)}px`, // Carousel slide
             transition: "margin-left 0.5s",
             overflowY: "hidden",
+            position: "relative",
+            zIndex: 0,
           }}
         >
           {movies.map((movie, idx) => {
@@ -82,12 +96,20 @@ export default function Home() {
             );
           })}
         </ul>
-        <button
-          onClick={handleNext}
-          disabled={activeIndex >= movies.length - 3}
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            right: 0,
+            transform: "translateY(-50%)",
+            zIndex: 2,
+          }}
         >
-          Next
-        </button>
+          <NextButton
+            handleNext={handleNext}
+            disabled={activeIndex >= movies.length - 2}
+          />
+        </div>
       </div>
     </div>
   );
