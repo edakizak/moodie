@@ -1,11 +1,8 @@
-import dbConnect from "../../../../lib/comments";
+import dbConnect from "../../../../db/connect";
 import CommentModel from "../../../../db/models/Comments";
 
 export default async function handler(req, res) {
-  const {
-    query: { id },
-    method,
-  } = req;
+  const { id } = req.query;
 
   await dbConnect();
 
