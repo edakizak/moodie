@@ -12,28 +12,29 @@ export default function DetailsMore() {
 
   console.log(id);
 
+  const fetchMovieDetailsMore = async (movieId) => {
+    if (!movieId) return;
+    const response = await fetch(`/api/movie/${movieId}`);
+    const data = await response.json();
+    setMovieDetailsMore(data);
+  };
+
+  const fetchComments = async (movieId) => {
+    if (!movieId) return;
+    const response = await fetch(`/api/comments/${movieId}`);
+    const data = await response.json();
+    setComments(data);
+  };
+
   useEffect(() => {
-    const fetchMovieDetailsMore = async (movieId) => {
-      if (id) {
-        const response = await fetch(`/api/movie/${movieId}`);
-        const data = await response.json();
-        setMovieDetailsMore(data);
-      }
-    };
-    const fetchComments = async () => {
-      if (id) {
-        const response = await fetch(`/api/comments/${id}`);
-        const data = await response.json();
-        setComments(data);
-      }
-    };
     if (id) {
       fetchMovieDetailsMore(id);
       fetchComments(id);
     }
   }, [id]);
 
-  console.log("fetchMovieDetailsMore", movieDetailsMore);
+  console.log("movieDetailsMore", movieDetailsMore);
+  console.log("comments", comments);
 
   if (!movieDetailsMore) {
     return <p>Loading...</p>;
@@ -42,14 +43,7 @@ export default function DetailsMore() {
   return (
     <div>
       <MovieDetailsMore movie={movieDetailsMore} />
-      {comments.map((comment) => (
-        <Comments
-          key={comment._id}
-          name={comment.name}
-          content={comment.comment}
-          timestamp={comment.timestamp}
-        />
-      ))}
+      <Comments comments={comments} />
     </div>
   );
 }

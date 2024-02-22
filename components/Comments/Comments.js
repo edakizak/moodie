@@ -1,40 +1,21 @@
-import styles from "./Comments.module.css";
+import Comment from "../Comment/Comment";
 
-export default function Comments({ name, content, timestamp }) {
+export default function Comments({ comments }) {
+  if (!Array.isArray(comments)) {
+    console.error("comments is not an array", comments);
+    return <p>No comments to display</p>;
+  }
+
   return (
-    <div className={styles.container}>
-      <div className={styles.name}>{name}</div>
-      <div className={styles.content}>{content}</div>
-      <div className={styles.timestamp}>{timestamp}</div>
+    <div>
+      {comments.map((comment) => (
+        <Comment
+          key={comment._id}
+          name={comment.name}
+          content={comment.comment}
+          timestamp={comment.timestamp}
+        />
+      ))}
     </div>
   );
 }
-
-// import styles from "./Comments.module.css";
-
-// // Comments bileşeni tüm yorumları listelemek için
-// export default function Comments({ comments }) {
-//   // Comment bileşeni individual yorumlar için
-//   const Comment = ({ name, content, timestamp }) => {
-//     return (
-//       <div className={styles.container}>
-//         <div className={styles.name}>{name}</div>
-//         <div className={styles.content}>{content}</div>
-//         <div className={styles.timestamp}>{timestamp}</div>
-//       </div>
-//     );
-//   };
-
-//   return (
-//     <div>
-//       {comments.map((comment) => (
-//         <Comment
-//           key={comment._id}
-//           name={comment.name}
-//           content={comment.comment}
-//           timestamp={comment.timestamp}
-//         />
-//       ))}
-//     </div>
-//   );
-// }

@@ -1,18 +1,17 @@
 import dbConnect from "../../../../db/connect";
-import CommentModel from "../../../../db/models/Comments";
+import Comments from "../../../../db/models/Comments";
 
-export default async function handler(req, res) {
-  const { id } = req.query;
-
+export default async function handler(request, response) {
   await dbConnect();
+  const { id } = request.query;
 
-  switch (method) {
-    case "GET":
-      const comments = await CommentModel.find({ movieId: id }).exec();
-      res.status(200).json(comments);
-      break;
-    default:
-      res.setHeader("Allow", ["GET"]);
-      res.status(405).end(`Method ${method} Not Allowed`);
+  if (request.method === "GET") {
+    const comments = await Comments.find({ movieId: id });
+
+    if (!comments) {
+      return response.status(404).json({ status: "Not Found" });
+    }
+
+    response.status(200).json(comments);
   }
 }
