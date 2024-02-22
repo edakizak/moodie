@@ -1,10 +1,14 @@
+// import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
 const commentsSchema = new Schema({
-  name: { type: String },
-  comment: { type: String },
+  name: { type: String, required: true },
+  comment: { type: String, required: true },
+  movieId: { type: String, required: true },
 });
-export const Comments =
+const Comments =
   mongoose.models.Comments || mongoose.model("Comments", commentsSchema);
+
+export default Comments;
