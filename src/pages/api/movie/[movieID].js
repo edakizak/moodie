@@ -7,7 +7,6 @@ export default async function handler(request, response) {
     const movie = await fetch(url);
     const details = await movie.json();
 
-    // console.log(response);
     response.status(200).json(details);
   }
 }
