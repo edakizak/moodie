@@ -12,12 +12,11 @@ export default function NewComment({ addComment, movieId }) {
     if (!commentText.trim() || !name.trim()) return;
     setIsSubmitting(true); // Gönderim işlemi başladığında UI'ı kilitle
     try {
-      await addComment(commentText, movieId, name); // addComment fonksiyonunu async olarak işaretle
+      await addComment(commentText, movieId, name);
       // Başarılı gönderim sonrası formu temizle
       setCommentText("");
       setName("");
-      // Başarılı gönderim mesajı ekle
-      alert("Comment added successfully!");
+      alert("Comment added successfully! 🎬 ");
     } catch (error) {
       // Hata yönetimi
       console.error("Failed to add comment:", error);
