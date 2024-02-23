@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import SearchBox from "../../components/SearchBox/SearchBox";
+import Header from "../../components/Header/Header";
 import Card from "../../components/Card/Card";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
 import styles from "../../components/Card/Card.module.css";
@@ -49,7 +50,8 @@ export default function Home() {
 
   return (
     <div>
-      <SearchBox onSearch={searchMovies} />
+      <Header onSearch={searchMovies} />
+      {/* <SearchBox onSearch={searchMovies} /> */}
       <div style={{ display: "flex", marginTop: "20px", position: "relative" }}>
         <div
           style={{
