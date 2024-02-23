@@ -19,10 +19,7 @@ export default function Comment({ name, content, timestamp, isSpoiler }) {
       >
         {isSpoiler && !showSpoiler ? "Spoiler" : content}
       </div>
-      <div className={styles.timestamp}>
-        {/* {new Date(timestamp).toLocaleString()} */}
-        {dateString}
-      </div>
+      <div className={styles.timestamp}>{dateString}</div>
     </div>
   );
 }

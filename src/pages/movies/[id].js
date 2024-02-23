@@ -41,7 +41,12 @@ export default function DetailsMore() {
     fetchComments(id);
   }, [id]);
 
-  const addComment = async (commentText, movieId, name = "Anonymous") => {
+  const addComment = async (
+    commentText,
+    movieId,
+    name = "Anonymous",
+    isSpoiler
+  ) => {
     try {
       const timestamp = Date.now();
       const response = await fetch(`/api/comments/${movieId}`, {
@@ -53,10 +58,11 @@ export default function DetailsMore() {
           name,
           comment: commentText,
           movieId,
+          isSpoiler,
         }),
       });
       if (!response.ok) throw new Error("Failed to add comment.");
-      const newComment = { name, comment: commentText, timestamp };
+      const newComment = { name, comment: commentText, timestamp, isSpoiler };
       // const newComment = await response.json();
       setComments((prevComments) => [
         ...prevComments,

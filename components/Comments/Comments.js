@@ -10,6 +10,7 @@ export default function Comments({ comments }) {
           name={comment.name}
           content={comment.comment}
           timestamp={comment.timestamp}
+          isSpoiler={comment.isSpoiler}
         />
       ))}
     </div>
