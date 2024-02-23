@@ -77,7 +77,14 @@ export default function DetailsMore() {
   return (
     <div>
       <MovieDetailsMore movie={movieDetailsMore} />
-      <Comments comments={comments} />
+      {/* <Comments comments={comments} /> */}
+      <Comments
+        comments={comments.map((comment) => ({
+          ...comment,
+          isSpoiler: comment.isSpoiler,
+        }))}
+      />
+
       <NewComment addComment={addComment} movieId={id} />
     </div>
   );

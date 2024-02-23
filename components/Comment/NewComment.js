@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import styles from "./NewComment.module.css";
-import { FaArrowUp } from "react-icons/fa6";
+import { FaArrowUp, FaToggleOn, FaToggleOff } from "react-icons/fa6";
 
 export default function NewComment({ addComment, movieId }) {
   const [commentText, setCommentText] = useState("");
   const [name, setName] = useState(""); // user name
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSpoiler, setIsSpoiler] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!commentText.trim() || !name.trim()) return;
     setIsSubmitting(true); // Gönderim işlemi başladığında UI'ı kilitle
     try {
-      await addComment(commentText, movieId, name);
+      await addComment(commentText, movieId, name, isSpoiler);
       // Başarılı gönderim sonrası formu temizle
       setCommentText("");
       setName("");
+      setIsSpoiler(false);
       alert("Comment added successfully! 🎬 ");
     } catch (error) {
       // Hata yönetimi
@@ -24,6 +26,9 @@ export default function NewComment({ addComment, movieId }) {
     } finally {
       setIsSubmitting(false); // Her durumda UI kilidini aç
     }
+  };
+  const handleToggle = () => {
+    setIsSpoiler(!isSpoiler);
   };
 
   return (
@@ -55,6 +60,17 @@ export default function NewComment({ addComment, movieId }) {
         disabled={isSubmitting}
       >
         <FaArrowUp />
+      </button>
+      <button
+        type="button"
+        className={`${styles.toggleButton} ${
+          isSpoiler ? styles.isSpoilerOn : ""
+        }`}
+        onClick={handleToggle}
+        aria-label="Toggle spoiler"
+        disabled={isSubmitting}
+      >
+        {isSpoiler ? <FaToggleOn /> : <FaToggleOff />}
       </button>
     </form>
   );

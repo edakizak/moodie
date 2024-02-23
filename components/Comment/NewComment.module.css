@@ -10,12 +10,12 @@
 }
 
 .newCommentTextarea {
-  flex: 2; /* Let the textarea take up more space */
+  flex: 2;
   padding: 8px 16px;
   border: none;
   border-radius: 18px;
   margin-right: 8px;
-  resize: none; /* Prevent resizing */
+  /* resize: none;  */
 }
 
 .newCommentTextarea:focus {
@@ -48,4 +48,31 @@
   border: none;
   border-radius: 18px;
   margin-right: 8px;
+}
+
+.toggleButton {
+  background-color: rgb(92, 87, 87);
+  border: none;
+  border-radius: 50%;
+  margin-left: 10px;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.toggleButton:hover {
+  background-color: #5a6268;
+}
+
+.isSpoilerOn {
+  background-color: #28a745;
+}
+
+.isSpoilerOn:hover {
+  background-color: #218838;
 }
