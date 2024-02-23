@@ -104,8 +104,9 @@ export default function DetailsMore() {
     try {
       if (!movieId) return;
       const response = await fetch(`/api/comments/${movieId}`);
-      if (!response.ok) throw new Error("Comments could not be fetched.");
+      if (!response.ok) throw new Error("**Comments could not be fetched.");
       const data = await response.json();
+      console.log(data);
       setComments(data);
     } catch (err) {
       setError(err.message);
@@ -113,6 +114,7 @@ export default function DetailsMore() {
   };
 
   useEffect(() => {
+    console.log("id--------", typeof id);
     fetchMovieDetailsMore(id);
     fetchComments(id);
   }, [id]);
