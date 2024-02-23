@@ -5,7 +5,9 @@ export default function Comment({ name, content, timestamp }) {
     <div className={styles.container}>
       <div className={styles.name}>{name}</div>
       <div className={styles.content}>{content}</div>
-      <div className={styles.timestamp}>{timestamp}</div>
+      <div className={styles.timestamp}>
+        {new Date(timestamp).toLocaleString()}
+      </div>
     </div>
   );
 }
