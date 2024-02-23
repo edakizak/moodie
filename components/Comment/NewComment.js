@@ -11,29 +11,30 @@ export default function NewComment({ addComment, movieId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!commentText.trim() || !name.trim()) return;
-    setIsSubmitting(true); // Gönderim işlemi başladığında UI'ı kilitle
+    setIsSubmitting(true);
     try {
       await addComment(commentText, movieId, name, isSpoiler);
-      // Başarılı gönderim sonrası formu temizle
       setCommentText("");
       setName("");
       setIsSpoiler(false);
       alert("Comment added successfully! 🎬 ");
     } catch (error) {
-      // Hata yönetimi
       console.error("Failed to add comment:", error);
       alert("Failed to add comment.");
     } finally {
-      setIsSubmitting(false); // Her durumda UI kilidini aç
+      setIsSubmitting(false);
     }
   };
+
   const handleToggle = () => {
     setIsSpoiler(!isSpoiler);
   };
 
+  console.log("NewComment-isSpoiler:", isSpoiler);
+
   return (
     <form className={styles.newCommentContainer} onSubmit={handleSubmit}>
-      {/* <img src="path-to-profile-icon.png" alt="Profile Icon" class="profileIcon" /> */}
+      {/* <img src="" alt="Profile Icon" class="profileIcon" /> */}
       <input type="hidden" value={movieId} name="movieId"></input>
       <input
         className={styles.userName}

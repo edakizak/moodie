@@ -8,6 +8,8 @@ const commentSchema = new Schema({
   comment: { type: String, required: true },
   movieId: { type: String, required: true },
   // movieId: { type: Schema.Types.ObjectId, required: true, ref: "Movie" },
+  isSpoiler: { type: Boolean, default: false },
+  timestamp: { type: Date, required: true, default: Date.now() },
 });
 const Comment =
   mongoose.models.Comment || mongoose.model("Comment", commentSchema);

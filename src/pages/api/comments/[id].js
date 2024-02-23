@@ -17,10 +17,14 @@ export default async function handler(request, response) {
   }
   if (request.method === "POST") {
     try {
-      const commentsData = request.body;
+      const { name, comment, movieId, isSpoiler, timestamp } = request.body;
+      const commentsData = { name, comment, movieId, isSpoiler, timestamp };
+      // const commentsData = request.body;
       await Comment.create(commentsData);
-
-      response.status(201).json({ status: "Comment created" });
+      console.log("isSpoiler", isSpoiler);
+      response
+        .status(201)
+        .json({ status: "Comment created", data: commentsData });
     } catch (error) {
       console.log(error);
       response.status(400).json({ error: error.message });
