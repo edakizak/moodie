@@ -12,17 +12,19 @@ export default function SearchBox({ onSearch }) {
   };
 
   return (
-    <form onSubmit={handleSearch} className={styles.form}>
-      <input
-        className={styles.input}
-        type="text"
-        placeholder="Search for a movie..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <button className={styles.button} type="submit">
-        <CiSearch />
-      </button>
-    </form>
+    <div className={styles.searchBoxContainer}>
+      <form onSubmit={handleSearch} className={styles.form}>
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Search for a movie..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button className={styles.button} type="submit">
+          <CiSearch />
+        </button>
+      </form>
+    </div>
   );
 }
