@@ -1,21 +1,28 @@
-/* NewComment.module.css */
 .newCommentContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 10px;
-  background-color: #f0f2f5;
-  border-radius: 18px;
-  margin: 20px 0;
-  position: relative;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  margin-bottom: 100px;
 }
 
 .newCommentTextarea {
-  flex: 2;
-  padding: 8px 16px;
+  width: 100%;
   border: none;
-  border-radius: 18px;
-  margin-right: 8px;
-  /* resize: none;  */
+  outline: none;
+  resize: none; /* If it's a textarea */
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .newCommentTextarea:focus {
@@ -27,52 +34,64 @@
   background-color: #007bff;
   border: none;
   border-radius: 50%;
-  margin-left: -45px;
   padding: 10px 12px;
   cursor: pointer;
   color: white;
   font-size: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
   transition: background-color 0.3s ease;
+  margin-top: 15px;
+  flex-direction: flex-right;
+  margin-left: auto;
 }
-
 .newCommentButton:hover {
   background-color: #0056b3;
 }
 
 .userName {
-  flex: 0 1 auto;
-  padding: 8px 16px;
   border: none;
-  border-radius: 18px;
-  margin-right: 8px;
+  text-decoration: underline;
+  margin-right: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 15px;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .toggleButton {
-  background-color: rgb(92, 87, 87);
+  background-color: inherit;
   border: none;
   border-radius: 50%;
-  margin-left: 10px;
+  margin-top: 15px;
   padding: 10px;
   cursor: pointer;
-  color: white;
-  font-size: 20px;
+  color: rgb(85, 85, 85);
+  font-size: 40px;
   display: flex;
-  align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease;
 }
+.spoilerContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
 
 .toggleButton:hover {
-  background-color: #5a6268;
+  /* background-color: #5a6268; */
 }
 
 .isSpoilerOn {
-  background-color: #28a745;
+  color: #218838;
 }
 
 .isSpoilerOn:hover {
-  background-color: #218838;
+  /* background-color: #218838; */
 }
