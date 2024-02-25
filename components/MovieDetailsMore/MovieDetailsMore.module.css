@@ -61,9 +61,10 @@
 .container {
   display: flex;
   align-items: center;
-  max-width: 1000px;
+
   overflow: hidden;
   background-color: #000000; /* Dark mode compatible */
+  width: 100%;
 }
 
 .cardImage {
