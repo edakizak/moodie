@@ -1,37 +1,40 @@
 .container {
   display: flex;
-  flex-direction: column;
-  padding: 20px;
-  background-color: white;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
-  justify-content: center;
   align-items: flex-start;
+  padding: 20px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.userIcon {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
 }
 
 .name {
-  font-size: 1.1em;
-  font-weight: 600;
+  font-size: 1em;
+  font-weight: bold;
   color: #333;
-  margin-bottom: 6px;
+}
+.timestamp {
+  color: #999;
+  font-size: 0.85em;
+  margin-top: 0px;
+  margin-left: auto;
 }
 
 .content {
   color: #555;
-  background-color: #f3f3f3;
-  padding: 15px;
-  border-radius: 5px;
+  font-size: 1em;
   line-height: 1.6;
+  margin-top: 8px;
   width: 100%;
 }
 
-.timestamp {
-  color: #999;
-  font-size: 0.85em;
-  margin-top: 10px;
-  align-self: flex-end;
+.container2 {
+  flex-grow: 1;
+  min-width: 0;
 }
 
 .blur {

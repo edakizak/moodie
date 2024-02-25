@@ -1,10 +1,9 @@
-import OpenAiSearchBox from "../../components/OpenAiSearchBox/OpenAiSearchBox";
-
+import OpenAiChat from "../../components/OpenAi/OpenAiChat.js";
 export default function Moodie() {
   return (
     <div>
       <h1>What is your mood?</h1>
-      <OpenAiSearchBox />
+      <OpenAiChat />
     </div>
   );
 }
