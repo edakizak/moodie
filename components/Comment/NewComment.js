@@ -33,46 +33,51 @@ export default function NewComment({ addComment, movieId }) {
   console.log("NewComment-isSpoiler:", isSpoiler);
 
   return (
-    <form className={styles.newCommentContainer} onSubmit={handleSubmit}>
-      {/* <img src="" alt="Profile Icon" class="profileIcon" /> */}
-      <input type="hidden" value={movieId} name="movieId"></input>
-      <input
-        className={styles.userName}
-        type="text"
-        placeholder="name"
-        name="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        aria-label="Your name"
-        disabled={isSubmitting}
-      ></input>
-      <textarea
-        className={styles.newCommentTextarea}
-        placeholder="Add a comment"
-        value={commentText}
-        onChange={(e) => setCommentText(e.target.value)}
-        name="comment"
-        aria-label="Add a comment"
-        disabled={isSubmitting}
-      />
-      <button
-        className={styles.newCommentButton}
-        type="submit"
-        disabled={isSubmitting}
-      >
-        <FaArrowUp />
-      </button>
-      <button
-        type="button"
-        className={`${styles.toggleButton} ${
-          isSpoiler ? styles.isSpoilerOn : ""
-        }`}
-        onClick={handleToggle}
-        aria-label="Toggle spoiler"
-        disabled={isSubmitting}
-      >
-        {isSpoiler ? <FaToggleOn /> : <FaToggleOff />}
-      </button>
-    </form>
+    <div className={styles.container}>
+      <form className={styles.newCommentContainer} onSubmit={handleSubmit}>
+        <input type="hidden" value={movieId} name="movieId"></input>
+        <input
+          className={styles.userName}
+          type="text"
+          placeholder="Your Name"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          aria-label="Your name"
+          disabled={isSubmitting}
+        ></input>
+        <textarea
+          className={styles.newCommentTextarea}
+          type="text"
+          placeholder="Add a comment"
+          value={commentText}
+          onChange={(e) => setCommentText(e.target.value)}
+          name="comment"
+          aria-label="Add a comment"
+          disabled={isSubmitting}
+        />
+        <div className={styles.buttons}>
+          <div className={styles.spoilerContainer}>Spoiler</div>
+          <button
+            type="button"
+            className={`${styles.toggleButton} ${
+              isSpoiler ? styles.isSpoilerOn : ""
+            }`}
+            onClick={handleToggle}
+            aria-label="Toggle spoiler"
+            disabled={isSubmitting}
+          >
+            {isSpoiler ? <FaToggleOn /> : <FaToggleOff />}
+          </button>
+          <button
+            className={styles.newCommentButton}
+            type="submit"
+            disabled={isSubmitting}
+          >
+            <FaArrowUp />
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }

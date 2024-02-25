@@ -1,23 +1,45 @@
+/* .container {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: black;
+  margin-bottom: 25px;
+}
+
 .detailsContainer {
   padding: 20px;
-  flex: 1;
-  overflow-y: auto;
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+}
+.cardImage {
+  flex-shrink: 0;
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-top-left-radius: 8px; 
+  border-bottom-left-radius: 8px;
+  margin-top: 40px;
 }
 
 .title {
   font-size: 1.2rem;
-  color: #333;
+  color: #efefef;
   margin-bottom: 10px;
 }
 
 .overview {
-  color: #666;
+  color: #efefef;
   line-height: 1.6;
 }
 
 .info {
   font-weight: bold;
   margin-top: 10px;
+  color: #efefef;
 }
 
 .genres {
@@ -29,9 +51,90 @@
   color: #007bff;
 }
 
-.button {
-  background-color: #007bff;
-  color: white;
-  border-radius: 20px;
-  width: 50px;
+.runtime {
+  color: #efefef;
+}
+.imdbRate {
+  color: #efefef;
+} */
+
+.container {
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+  background-color: #000000; /* Dark mode compatible */
+  width: 100%;
+}
+
+.cardImage {
+  flex-shrink: 0;
+  width: 100%; /* Let the image be responsive */
+  max-width: 300px; /* Adjust the maximum width as needed */
+  height: auto;
+  object-fit: cover;
+}
+
+.detailsContainer {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* Distribute space around items */
+  color: #f0f0f0; /* Light text for contrast */
+}
+
+.title,
+.info,
+.overview,
+.genres,
+.date,
+.runtime,
+.imdbRate {
+  margin-bottom: 10px;
+  transition: color 0.3s ease; /* Smooth transition for color changes */
+}
+
+.title {
+  font-size: 1.5rem; /* Larger font size for emphasis */
+  font-weight: bold;
+}
+.genres {
+  color: #007bff;
+  font-weight: bold;
+}
+.date {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.overview {
+  font-size: 0.9rem; /* Smaller font for less important text */
+}
+
+/* Responsive media queries */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack elements on small screens */
+    align-items: stretch; /* Stretch to fill the width */
+  }
+
+  .cardImage {
+    width: auto; /* Full width on small screens */
+    max-width: none;
+    border-top-right-radius: 12px; /* Adjusted for changed layout */
+    border-bottom-left-radius: 0;
+  }
+
+  .detailsContainer {
+    align-items: center; /* Center align text for a better look on small screens */
+    text-align: center;
+  }
+}
+
+/* Hover effects for interactive elements */
+.button:hover,
+.genres:hover {
+  color: #007bff; /* Highlight color */
+  cursor: pointer;
 }
