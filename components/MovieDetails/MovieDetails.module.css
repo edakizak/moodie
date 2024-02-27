@@ -1,38 +1,70 @@
+@font-face {
+  font-family: "Utendo Bold";
+  src: url(../../public/assets/utendo/Utendo-Bold.ttf);
+}
+@font-face {
+  font-family: "Utendo Regular";
+  src: url(../../public/assets/utendo/Utendo-Regular.ttf);
+}
+@font-face {
+  font-family: "Utendo Light";
+  src: url(../../public/assets/utendo/Utendo-Light.ttf);
+}
 .detailsContainer {
   background-color: #fff;
   padding: 20px;
   flex: 1;
   overflow-y: auto;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 20px;
 }
 
 .title {
   font-size: 1.2rem;
   color: #333;
   margin-bottom: 10px;
+  font-family: "Utendo Bold";
 }
 
 .overview {
   color: #666;
   line-height: 1.6;
+  font-family: "Utendo Regular";
 }
 
 .info {
   font-weight: bold;
   margin-top: 10px;
+  font-family: "Utendo Bold";
+  color: #666;
 }
 
 .genres {
   margin-top: 5px;
-  color: #007bff;
+  color: rgb(13, 17, 247);
+  font-family: "Utendo Regular";
 }
 .date {
   margin-top: 5px;
-  color: #007bff;
+  color: rgb(13, 17, 247);
+  font-family: "Utendo Regular";
 }
 
 .button {
-  background-color: #007bff;
+  background-color: #000000;
   color: white;
   border-radius: 20px;
-  width: 50px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  float: right;
+  border: none;
+  font-family: "Utendo Light";
+}
+
+.detailsContainer::after {
+  content: "";
+  clear: both;
+  display: table;
 }

@@ -6,12 +6,14 @@ import MovieDetails from "../../components/MovieDetails/MovieDetails";
 import styles from "../../components/Card/Card.module.css";
 import PrevButton from "../../components/Button/PrevButton";
 import NextButton from "../../components/Button/NextButton";
+import TopRatedMovies from "../../components/TopRated/TopRated";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0); // Carousel state
   const [activeMovie, setActiveMovie] = useState(null);
+
   const searchMovies = async (searchTerm) => {
     const response = await fetch(
       `/api/search?query=${encodeURIComponent(searchTerm)}`
@@ -32,7 +34,7 @@ export default function Home() {
     console.log("Selected movie details updated:", selectedMovieDetails);
   }, [selectedMovieDetails]);
 
-  const cardWidth = 500;
+  const cardWidth = 460;
   const cardMargin = 20;
 
   const handlePrev = () => {
@@ -99,7 +101,7 @@ export default function Home() {
             })}
           </ul>
         ) : (
-          <p>No movies found. Try selecting a mood!</p>
+          <TopRatedMovies />
         )}
         <div
           style={{

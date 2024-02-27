@@ -9,19 +9,21 @@ export default function Card({ movie }) {
     ? movie.genres.map((genre) => genre.name).join(", ")
     : "No Genre";
   return (
-    <li key={movie.id} className={styles.cardContainer}>
-      <div className={styles.cardImageWrapper}>
-        <Image
-          className={styles.cardImage}
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.title}
-          layout="fill"
-        />
-        <div className={styles.cardContent}>
-          <h3 className={styles.cardTitle}>{movie.title}</h3>
-          <p className={styles.cardInfo}>{releaseYear}</p>
+    <div className={styles.container}>
+      <li key={movie.id} className={styles.cardContainer}>
+        <div className={styles.cardImageWrapper}>
+          <Image
+            className={styles.cardImage}
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+            layout="fill"
+          />
+          <div className={styles.cardContent}>
+            <h3 className={styles.cardTitle}>{movie.title}</h3>
+            <p className={styles.cardInfo}>{releaseYear}</p>
+          </div>
         </div>
-      </div>
-    </li>
+      </li>
+    </div>
   );
 }
