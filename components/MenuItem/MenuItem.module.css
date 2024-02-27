@@ -1,6 +1,14 @@
+@font-face {
+  font-family: "Utendo Light";
+  src: url(../../public/assets/utendo/Utendo-Light.ttf);
+}
+
 .menuItem {
   display: flex;
   align-items: center;
+  font-family: "Utendo Light";
+  font-size: 1.2rem;
+  letter-spacing: 3px;
 }
 
 .link {
@@ -10,6 +18,10 @@
 }
 .link:hover {
   text-decoration: underline;
+  color: blue;
+}
+.link:focus {
+  color: blue;
 }
 
 .image {

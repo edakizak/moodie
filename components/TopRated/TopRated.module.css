@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "Utendo Light";
+  src: url(../../public/assets/utendo/Utendo-Light.ttf);
+}
+@font-face {
+  font-family: "Utendo Medium";
+  src: url(../../public/assets/utendo/Utendo-Medium.ttf);
+}
+
+.li {
+  width: 33.333%;
+  list-style: none;
+}
+.title {
+  font-family: "Utendo Light";
+  margin-left: 20px;
+  font-size: 1.2rem;
+  background-color: rgb(0, 0, 0);
+  width: 210px;
+  color: rgb(255, 255, 255);
+  padding: 5px 20px 5px 20px;
+  border-radius: 30px;
+}
+
+.container2 {
+  background-color: rgb(232, 232, 232);
+  margin: 20px;
+  margin: 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  flex: 0 1 300px;
+}
+.ul {
+  overflow: hidden;
+}

@@ -4,6 +4,7 @@ import PrevButton from "../Button/PrevButton";
 import NextButton from "../Button/NextButton";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import Card from "../Card/Card";
+import TopRatedMovies from "../TopRated/TopRated";
 
 export default function SearchBox({ movie }) {
   const [mood, setMood] = useState("");
@@ -151,7 +152,7 @@ export default function SearchBox({ movie }) {
             ))}
           </ul>
         ) : (
-          <p>No movies found. Try selecting a mood!</p>
+          <TopRatedMovies />
         )}
         <div
           style={{
