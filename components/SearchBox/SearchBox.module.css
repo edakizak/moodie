@@ -12,7 +12,7 @@
   width: 100%;
   max-width: 600px;
   font-size: 16px;
-  color: #ffffff;
+  color: grey;
   outline: none;
   transition: all 0.3s ease;
   background-color: rgb(233, 233, 233);
@@ -44,7 +44,7 @@
 }
 
 .button:hover {
-  background-color: #0056b3;
+  color: rgb(72, 72, 72);
 }
 
 .button:focus {

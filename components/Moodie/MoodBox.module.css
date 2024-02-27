@@ -42,35 +42,33 @@
   letter-spacing: 3px;
   margin-top: 0;
 }
-.carouselselect {
-  display: flex;
-}
-.carouselselect:hover {
-}
+
 .select {
   background-color: transparent;
   border: none;
-  color: currentColor; /* Inherits the color from the paragraph */
-  font-family: "Utendo Medium"; /* Match the font with the paragraph */
-  font-size: 3rem; /* Match the size with the paragraph */
-  letter-spacing: 3px; /* Match the letter-spacing with the paragraph */
-  -webkit-appearance: none; /* Removes default style of select in WebKit browsers */
-  -moz-appearance: none; /* Removes default style of select in Firefox */
-  appearance: none; /* Standard way to remove default style */
+  color: currentColor;
+  font-family: "Utendo Medium";
+  font-size: 3rem;
+  letter-spacing: 3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   margin: 0 5px;
   color: rgb(244, 208, 101);
   margin-left: 20px;
   height: 100px;
+  align-items: center;
+  margin-right: 0;
+}
+.select::-ms-expand {
+  display: none;
 }
 
-.select:focus {
-  background-color: rgb(240, 240, 240);
-}
-.option1 {
-  font-family: "Overwave";
+.select:hover {
+  color: rgb(69, 31, 255);
 }
 
-.option1,
+/* .option1, */
 .option2,
 .option3,
 .option4,
@@ -80,9 +78,8 @@
 .option8,
 .option9,
 .option10 {
-  background-color: inherit;
-  color: white;
-  font-family: "Overwave";
+  background-color: #f0f0f0;
+  color: rgb(190, 0, 0);
   font-size: 1rem;
 }
 .option1:hover,
@@ -101,17 +98,47 @@
   outline: none;
 }
 .moviecontainer {
+  list-style: none;
+  margin: 20px;
+  /* padding: 20px; */
+  /* border: 1px solid #ddd; */
+  border-radius: 8px;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  transition: all 0.3s ease;
+  flex: 0 1 300px;
+  overflow: hidden;
+}
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%;
 }
 
 .movieul {
+  display: flex; /* Use flexbox for horizontal layout */
+  width: calc(100% * (movies.length / 3)); /* Set width based on movie count */
+  transform: translateX(
+    -${activeIndex * 100 / 3}%
+  ); /* Move the window to show the correct movies */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for movement */
 }
 .movieli {
+  width: 33.333%; /* Each movie takes up a third of the container */
+  /* flex-shrink: 0; / */
 }
 
 .movieli:hover {
 }
 
-.movieImage p {
+.movieImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 .movieImage:hover {

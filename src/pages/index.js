@@ -64,40 +64,44 @@ export default function Home() {
         >
           <PrevButton handlePrev={handlePrev} disabled={activeIndex === 0} />
         </div>
-        <ul
-          style={{
-            display: "flex",
-            padding: 0,
-            marginLeft: `-${activeIndex * (cardWidth + cardMargin * 2)}px`, // Carousel slide
-            transition: "margin-left 0.5s",
-            overflowY: "hidden",
-            position: "relative",
-            zIndex: 0,
-          }}
-        >
-          {movies.map((movie, idx) => {
-            console.log("selectedMovieDetails", selectedMovieDetails);
-            console.log("index", idx);
-            return (
-              <li
-                key={movie.id}
-                className={styles.cardContainer}
-                onClick={() => fetchMovieDetails(movie.id, idx)}
-                style={{
-                  marginRight: `${cardMargin}px`,
-                  flex: "0 0 auto",
-                  width: `${cardWidth}px`,
-                  cursor: "pointer",
-                }}
-              >
-                <Card key={movie.id} movie={movie} />
-                {activeMovie === idx && selectedMovieDetails && (
-                  <MovieDetails movie={selectedMovieDetails} />
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        {movies.length > 0 ? (
+          <ul
+            style={{
+              display: "flex",
+              padding: 0,
+              marginLeft: `-${activeIndex * (cardWidth + cardMargin * 2)}px`, // Carousel slide
+              transition: "margin-left 0.5s",
+              overflowY: "hidden",
+              position: "relative",
+              zIndex: 0,
+            }}
+          >
+            {movies.map((movie, idx) => {
+              console.log("selectedMovieDetails", selectedMovieDetails);
+              console.log("index", idx);
+              return (
+                <li
+                  key={movie.id}
+                  className={styles.cardContainer}
+                  onClick={() => fetchMovieDetails(movie.id, idx)}
+                  style={{
+                    marginRight: `${cardMargin}px`,
+                    flex: "0 0 auto",
+                    width: `${cardWidth}px`,
+                    cursor: "pointer",
+                  }}
+                >
+                  <Card key={movie.id} movie={movie} />
+                  {activeMovie === idx && selectedMovieDetails && (
+                    <MovieDetails movie={selectedMovieDetails} />
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <p>No movies found. Try selecting a mood!</p>
+        )}
         <div
           style={{
             position: "absolute",
