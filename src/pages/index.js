@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SearchBox from "../../components/SearchBox/SearchBox";
+// import SearchBox from "../../components/SearchBox/SearchBox";
 import Header from "../../components/Header/Header";
 import Card from "../../components/Card/Card";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";

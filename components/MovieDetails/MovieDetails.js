@@ -5,9 +5,9 @@ export default function MovieDetails({ movie }) {
   if (!movie) return null;
 
   const words = movie.overview.split(" ");
-  const limitedOverview = words.slice(0, 0).join(" ");
+  const limitedOverview = words.slice(0, 10).join(" ");
 
-  const shouldShowMore = words.length > 20;
+  const shouldShowMore = words.length > 10;
   const displayedOverview = shouldShowMore
     ? `${limitedOverview}...`
     : limitedOverview;
