@@ -35,9 +35,16 @@ export default function SearchBox({ movie }) {
     <div>
       <p>Hey there! How&apos;s your vibe today? 🎬🍿 Choose your current</p>
       <select value={mood} onChange={handleMoodChange}>
-        <option value="">mood</option>
-        <option value="bored">Bored</option>
-        <option value="sad">Sad</option>
+        <option value="">mood✨</option>
+        <option value="bored">bored😑</option>
+        <option value="joyful">joyful🥳</option>
+        <option value="curious">curious🧐</option>
+        <option value="sad">sad😞</option>
+        <option value="dreamy">dreamy🫠</option>
+        <option value="rhythmic">rhythmic🕺🏼</option>
+        <option value="nostalgic">nostalgic📜</option>
+        <option value="loving">loving🥰</option>
+        <option value="familial">familial🧸</option>
       </select>
       <p>Let the movie magic begin!Your film fest awaits!</p>
       <div>

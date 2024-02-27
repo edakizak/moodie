@@ -5,7 +5,6 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Method Not Allowed" });
   }
 
-  // Query parameter
   const { query } = req.query;
   if (!query) {
     return res.status(400).json({ message: "Query is required" });
