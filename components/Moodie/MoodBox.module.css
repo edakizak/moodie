@@ -1,0 +1,63 @@
+/* @font-face {
+  font-family: "Quicksand";
+  src: url(../../public/assets/Quicksand/static/Quicksand-SemiBold.ttf)
+    format("truetype");
+} */
+
+.container {
+}
+.headercontainer {
+  background-color: black;
+  color: white;
+  padding: 30px 30px 30px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.paragraph1 {
+  font-size: 3rem;
+  /* font-family: "Quicksand"; */
+}
+.paragraph2 {
+}
+
+.select {
+  border: none;
+  color: white;
+  background-color: inherit;
+  align-items: center;
+  width: 120px;
+  font-size: 1rem;
+}
+
+.select:focus {
+}
+
+.option1,
+.option2,
+.option3,
+.option4,
+.option5,
+.option6,
+.option7,
+.option8,
+.option9,
+.option10 {
+}
+
+.moviecontainer {
+}
+
+.movieul {
+}
+.movieli {
+}
+
+.movieli:hover {
+}
+
+.movieImage p {
+}
+
+.movieImage:hover {
+}

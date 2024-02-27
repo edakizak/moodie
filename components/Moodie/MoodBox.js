@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import styles from "./MoodBox.module.css";
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
@@ -32,29 +33,59 @@ export default function SearchBox({ movie }) {
   };
 
   return (
-    <div>
-      <p>Hey there! How&apos;s your vibe today? 🎬🍿 Choose your current</p>
-      <select value={mood} onChange={handleMoodChange}>
-        <option value="">mood✨</option>
-        <option value="bored">bored😑</option>
-        <option value="joyful">joyful🥳</option>
-        <option value="curious">curious🧐</option>
-        <option value="sad">sad😞</option>
-        <option value="dreamy">dreamy🫠</option>
-        <option value="rhythmic">rhythmic🕺🏼</option>
-        <option value="nostalgic">nostalgic📜</option>
-        <option value="loving">loving🥰</option>
-        <option value="familial">familial🧸</option>
-      </select>
-      <p>Let the movie magic begin!Your film fest awaits!</p>
-      <div>
+    <div className={styles.container}>
+      <div className={styles.headercontainer}>
+        <p className={styles.paragraph1}>
+          Hey there! <br />
+          How&apos;s your vibe today? 🎬🍿
+        </p>
+        <select
+          value={mood}
+          onChange={handleMoodChange}
+          className={styles.select}
+        >
+          <option value="" className={styles.option1}>
+            mood✨
+          </option>
+          <option value="bored" className={styles.option2}>
+            bored😑
+          </option>
+          <option value="joyful" className={styles.option3}>
+            joyful🥳
+          </option>
+          <option value="curious" className={styles.option4}>
+            curious🧐
+          </option>
+          <option value="sad" className={styles.option5}>
+            sad😞
+          </option>
+          <option value="dreamy" className={styles.option6}>
+            dreamy🫠
+          </option>
+          <option value="rhythmic" className={styles.option7}>
+            rhythmic🕺🏼
+          </option>
+          <option value="nostalgic" className={styles.option8}>
+            nostalgic📜
+          </option>
+          <option value="loving" className={styles.option9}>
+            loving🥰
+          </option>
+          <option value="familial" className={styles.option10}>
+            familial🧸
+          </option>
+        </select>
+        <p className={styles.paragraph2}>Your film fest awaits!</p>
+      </div>
+      <div className={styles.moviecontainer}>
         {movies.length > 0 ? (
-          <ul>
+          <ul className={styles.movieul}>
             {movies.map((movie) => (
-              <li key={movie.id}>
+              <li key={movie.id} className={styles.movieli}>
                 <p>{movie.title}</p>
                 {movie.poster_path && (
                   <Image
+                    className={styles.movieImage}
                     src={IMAGE_BASE_URL + movie.poster_path}
                     alt={movie.title + " poster"}
                     width={500}
