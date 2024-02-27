@@ -31,51 +31,56 @@ export default function SearchBox({ movie }) {
     setMood(selectedMood);
     fetchMovies(selectedMood);
   };
+  const moodPrefix = mood ? "I feel" : "How's your";
+  const moodSuffix = mood ? "today." : "today?";
 
   return (
     <div className={styles.container}>
       <div className={styles.headercontainer}>
-        <p className={styles.paragraph1}>
-          Hey there! <br />
-          How&apos;s your vibe today? 🎬🍿
+        <p className={styles.paragraph1}>Hey there! 🎬 🍿</p>
+        <p className={styles.paragraph2}>
+          {moodPrefix}
+
+          <select
+            value={mood}
+            onChange={handleMoodChange}
+            className={styles.select}
+          >
+            <option value="" className={styles.option1}>
+              ✨mood✨
+            </option>
+            <option value="bored" className={styles.option2}>
+              bored 😑
+            </option>
+            <option value="joyful" className={styles.option3}>
+              joyful 🥳
+            </option>
+            <option value="curious" className={styles.option4}>
+              curious 🧐
+            </option>
+            <option value="sad" className={styles.option5}>
+              sad 😞
+            </option>
+            <option value="dreamy" className={styles.option6}>
+              dreamy 🫠
+            </option>
+            <option value="rhythmic" className={styles.option7}>
+              rhythmic 🕺🏼
+            </option>
+            <option value="nostalgic" className={styles.option8}>
+              nostalgic 📜
+            </option>
+            <option value="loving" className={styles.option9}>
+              loving 🥰
+            </option>
+            <option value="familial" className={styles.option10}>
+              familial 🧸
+            </option>
+          </select>
+          {moodSuffix}
         </p>
-        <select
-          value={mood}
-          onChange={handleMoodChange}
-          className={styles.select}
-        >
-          <option value="" className={styles.option1}>
-            mood✨
-          </option>
-          <option value="bored" className={styles.option2}>
-            bored😑
-          </option>
-          <option value="joyful" className={styles.option3}>
-            joyful🥳
-          </option>
-          <option value="curious" className={styles.option4}>
-            curious🧐
-          </option>
-          <option value="sad" className={styles.option5}>
-            sad😞
-          </option>
-          <option value="dreamy" className={styles.option6}>
-            dreamy🫠
-          </option>
-          <option value="rhythmic" className={styles.option7}>
-            rhythmic🕺🏼
-          </option>
-          <option value="nostalgic" className={styles.option8}>
-            nostalgic📜
-          </option>
-          <option value="loving" className={styles.option9}>
-            loving🥰
-          </option>
-          <option value="familial" className={styles.option10}>
-            familial🧸
-          </option>
-        </select>
-        <p className={styles.paragraph2}>Your film fest awaits!</p>
+
+        <p className={styles.paragraph3}>Your film fest awaits!</p>
       </div>
       <div className={styles.moviecontainer}>
         {movies.length > 0 ? (

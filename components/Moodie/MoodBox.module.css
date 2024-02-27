@@ -1,8 +1,17 @@
-/* @font-face {
-  font-family: "Quicksand";
-  src: url(../../public/assets/Quicksand/static/Quicksand-SemiBold.ttf)
-    format("truetype");
-} */
+@font-face {
+  font-family: "Overwave";
+  src: url(../../public/assets/overwave/Overwave.ttf) format("truetype");
+  font-family: "Utendo Medium";
+  src: url(../../public/assets/utendo/Utendo-Medium.ttf);
+}
+@font-face {
+  font-family: "Utendo Light";
+  src: url(../../public/assets/utendo/Utendo-Light.ttf);
+}
+@font-face {
+  font-family: "Utendo Thin";
+  src: url(../../public/assets/utendo/Utendo-Thin.ttf);
+}
 
 .container {
 }
@@ -16,21 +25,49 @@
 
 .paragraph1 {
   font-size: 3rem;
-  /* font-family: "Quicksand"; */
+  font-family: "Utendo Medium";
+  margin-bottom: 0;
+  letter-spacing: 3px;
 }
 .paragraph2 {
+  font-size: 3rem;
+  font-family: "Utendo Medium";
+  margin-top: 16px;
+  letter-spacing: 3px;
 }
 
+.paragraph3 {
+  font-size: 2rem;
+  font-family: "Utendo Light";
+  letter-spacing: 3px;
+  margin-top: 0;
+}
+.carouselselect {
+  display: flex;
+}
+.carouselselect:hover {
+}
 .select {
+  background-color: transparent;
   border: none;
-  color: white;
-  background-color: inherit;
-  align-items: center;
-  width: 120px;
-  font-size: 1rem;
+  color: currentColor; /* Inherits the color from the paragraph */
+  font-family: "Utendo Medium"; /* Match the font with the paragraph */
+  font-size: 3rem; /* Match the size with the paragraph */
+  letter-spacing: 3px; /* Match the letter-spacing with the paragraph */
+  -webkit-appearance: none; /* Removes default style of select in WebKit browsers */
+  -moz-appearance: none; /* Removes default style of select in Firefox */
+  appearance: none; /* Standard way to remove default style */
+  margin: 0 5px;
+  color: rgb(244, 208, 101);
+  margin-left: 20px;
+  height: 100px;
 }
 
 .select:focus {
+  background-color: rgb(240, 240, 240);
+}
+.option1 {
+  font-family: "Overwave";
 }
 
 .option1,
@@ -43,8 +80,26 @@
 .option8,
 .option9,
 .option10 {
+  background-color: inherit;
+  color: white;
+  font-family: "Overwave";
+  font-size: 1rem;
+}
+.option1:hover,
+.option2:hover,
+.option3:hover,
+.option4:hover,
+.option5:hover,
+.option6:hover,
+.option7:hover,
+.option8:hover,
+.option9:hover,
+.option10:hover {
 }
 
+.select:focus {
+  outline: none;
+}
 .moviecontainer {
 }
 
