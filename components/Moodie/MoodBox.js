@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./MoodBox.module.css";
-
-const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+import PrevButton from "../Button/PrevButton";
+import NextButton from "../Button/NextButton";
+import MovieDetails from "../MovieDetails/MovieDetails";
+import Card from "../Card/Card";
 
 export default function SearchBox({ movie }) {
   const [mood, setMood] = useState("");
   const [movies, setMovies] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
 
   const fetchMovies = async (selectedMood) => {
     const response = await fetch("/api/moodie", {
@@ -34,6 +38,27 @@ export default function SearchBox({ movie }) {
   const moodPrefix = mood ? "I feel" : "How's your";
   const moodSuffix = mood ? "today." : "today?";
 
+  const handlePrev = () => {
+    // Carousel Prev
+    setActiveIndex((prevActiveIndex) => Math.max(prevActiveIndex - 1, 0));
+  };
+
+  const handleNext = () => {
+    // Carousel Next
+    setActiveIndex((nextActiveIndex) =>
+      Math.min(nextActiveIndex + 1, movies.length - 2)
+    );
+  };
+  const cardWidth = 500;
+  const cardMargin = 20;
+
+  const handleMovieClick = (movie) => {
+    setSelectedMovieDetails(movie);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedMovieDetails(null);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.headercontainer}>
@@ -82,28 +107,69 @@ export default function SearchBox({ movie }) {
 
         <p className={styles.paragraph3}>Your film fest awaits!</p>
       </div>
-      <div className={styles.moviecontainer}>
+      <div style={{ display: "flex", marginTop: "20px", position: "relative" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: 0,
+            transform: "translateY(-50%)",
+            zIndex: 2,
+          }}
+        >
+          <PrevButton handlePrev={handlePrev} disabled={activeIndex === 0} />
+        </div>
         {movies.length > 0 ? (
-          <ul className={styles.movieul}>
+          <ul
+            style={{
+              display: "flex",
+              padding: 0,
+              marginLeft: `-${activeIndex * (cardWidth + cardMargin * 2)}px`, // Carousel slide
+              transition: "margin-left 0.5s",
+              overflowY: "hidden",
+              position: "relative",
+              zIndex: 0,
+            }}
+          >
             {movies.map((movie) => (
-              <li key={movie.id} className={styles.movieli}>
-                <p>{movie.title}</p>
-                {movie.poster_path && (
-                  <Image
-                    className={styles.movieImage}
-                    src={IMAGE_BASE_URL + movie.poster_path}
-                    alt={movie.title + " poster"}
-                    width={500}
-                    height={750}
-                    layout="responsive"
-                  />
-                )}
+              <li
+                key={movie.id}
+                className={styles.movieli}
+                style={{
+                  marginRight: `${cardMargin}px`,
+                  flex: "0 0 auto",
+                  width: `${cardWidth}px`,
+                  cursor: "pointer",
+                }}
+                onClick={() => handleMovieClick(movie)}
+              >
+                <Card movie={movie} />
               </li>
             ))}
           </ul>
         ) : (
           <p>No movies found. Try selecting a mood!</p>
         )}
+        {setSelectedMovieDetails && (
+          <MovieDetails
+            movie={selectedMovieDetails}
+            onClose={handleCloseDetails}
+          />
+        )}
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            right: 0,
+            transform: "translateY(-50%)",
+            zIndex: 2,
+          }}
+        >
+          <NextButton
+            handleNext={handleNext}
+            disabled={activeIndex >= movies.length - 3}
+          />
+        </div>
       </div>
     </div>
   );

@@ -3,32 +3,58 @@
   src: url(../../public/assets/overwave/Overwave.ttf) format("truetype");
 }
 
-.HeaderContainer {
+.container {
   position: relative;
   background-color: rgb(0, 0, 0);
   width: 100%;
-  height: 360px;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+/* .moodieContainer {
+  width: 100%;
+  height: 100px; */
+/* } */
 .moodie {
-  font-size: 30vw;
-  color: rgb(13, 17, 247);
+  font-size: 20vw;
   font-family: "Overwave";
+  color: rgb(13, 17, 247);
   text-shadow: 1px 1px 0 rgb(11, 15, 225), 3px 3px 0 rgb(9, 13, 203),
     5px 5px 0 rgb(7, 11, 181), 7px 7px 0 rgb(5, 9, 159),
     9px 9px 0 rgb(3, 7, 137), 11px 11px 0 rgb(1, 5, 115);
+  /* color: rgb(41, 3, 255);
+  text-shadow: 1px 1px 0 rgb(14, 54, 255), 3px 3px 0 rgb(181, 30, 240),
+    5px 5px 0 rgb(0, 203, 95), 7px 7px 0 rgb(244, 46, 162),
+    9px 9px 0 rgb(251, 240, 21), 11px 11px 0 rgb(251, 104, 25); */
   letter-spacing: 6px;
   white-space: nowrap;
   text-overflow: ellipsis;
+  z-index: 1;
+  position: absolute;
+  margin-top: -24px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 768px) {
+  .moodie {
+    font-size: 20vw;
+  }
 }
 
 .SearchBox {
   position: absolute;
-  margin-top: 24px;
-  /* top: 50%;
+
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
   z-index: 10;
+}
+
+.moodie:hover {
+  color: rgb(255, 26, 110);
+  text-shadow: 1px 1px 0 rgb(123, 255, 7), 3px 3px 0 rgb(255, 146, 20),
+    5px 5px 0 rgb(15, 248, 232), 7px 7px 0 rgb(194, 35, 251),
+    9px 9px 0 rgb(35, 42, 255), 11px 11px 0 rgb(255, 109, 56);
 }

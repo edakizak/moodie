@@ -3,10 +3,9 @@ import Link from "next/link";
 
 export default function MovieDetails({ movie }) {
   if (!movie) return null;
-  // Metni kelimeye göre böl ve ilk 200 kelimeyi al
+
   const words = movie.overview.split(" ");
-  const limitedOverview = words.slice(0, 20).join(" ");
-  // Eğer metin 200 kelimeden fazla ise "..." ekleyerek kısalt
+  const limitedOverview = words.slice(0, 0).join(" ");
 
   const shouldShowMore = words.length > 20;
   const displayedOverview = shouldShowMore
