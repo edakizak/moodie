@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import styles from "./MoodBox.module.css";
 import PrevButton from "../Button/PrevButton";
 import NextButton from "../Button/NextButton";
@@ -11,6 +10,14 @@ export default function SearchBox({ movie }) {
   const [movies, setMovies] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
+  const [activeMovie, setActiveMovie] = useState(null);
+
+  const fetchMovieDetails = async (movieId, idx) => {
+    const response = await fetch(`/api/movie/${movieId}`);
+    const details = await response.json();
+    setSelectedMovieDetails(details);
+    setActiveMovie(idx);
+  };
 
   const fetchMovies = async (selectedMood) => {
     const response = await fetch("/api/moodie", {
@@ -52,13 +59,6 @@ export default function SearchBox({ movie }) {
   const cardWidth = 500;
   const cardMargin = 20;
 
-  const handleMovieClick = (movie) => {
-    setSelectedMovieDetails(movie);
-  };
-
-  const handleCloseDetails = () => {
-    setSelectedMovieDetails(null);
-  };
   return (
     <div className={styles.container}>
       <div className={styles.headercontainer}>
@@ -131,7 +131,7 @@ export default function SearchBox({ movie }) {
               zIndex: 0,
             }}
           >
-            {movies.map((movie) => (
+            {movies.map((movie, idx) => (
               <li
                 key={movie.id}
                 className={styles.movieli}
@@ -141,20 +141,17 @@ export default function SearchBox({ movie }) {
                   width: `${cardWidth}px`,
                   cursor: "pointer",
                 }}
-                onClick={() => handleMovieClick(movie)}
+                onClick={() => fetchMovieDetails(movie.id, idx)}
               >
                 <Card movie={movie} />
+                {activeMovie === idx && selectedMovieDetails && (
+                  <MovieDetails movie={selectedMovieDetails} />
+                )}
               </li>
             ))}
           </ul>
         ) : (
           <p>No movies found. Try selecting a mood!</p>
-        )}
-        {setSelectedMovieDetails && (
-          <MovieDetails
-            movie={selectedMovieDetails}
-            onClose={handleCloseDetails}
-          />
         )}
         <div
           style={{
