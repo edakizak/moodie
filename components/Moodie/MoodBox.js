@@ -3,11 +3,14 @@ import Image from "next/image";
 import styles from "./MoodBox.module.css";
 import PrevButton from "../Button/PrevButton";
 import NextButton from "../Button/NextButton";
+import MovieDetails from "../MovieDetails/MovieDetails";
+import Card from "../Card/Card";
 
 export default function SearchBox({ movie }) {
   const [mood, setMood] = useState("");
   const [movies, setMovies] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
 
   const fetchMovies = async (selectedMood) => {
     const response = await fetch("/api/moodie", {
@@ -43,11 +46,19 @@ export default function SearchBox({ movie }) {
   const handleNext = () => {
     // Carousel Next
     setActiveIndex((nextActiveIndex) =>
-      Math.min(nextActiveIndex + 1, movies.length - 1)
+      Math.min(nextActiveIndex + 1, movies.length - 2)
     );
   };
   const cardWidth = 500;
   const cardMargin = 20;
+
+  const handleMovieClick = (movie) => {
+    setSelectedMovieDetails(movie);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedMovieDetails(null);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.headercontainer}>
@@ -130,23 +141,20 @@ export default function SearchBox({ movie }) {
                   width: `${cardWidth}px`,
                   cursor: "pointer",
                 }}
+                onClick={() => handleMovieClick(movie)}
               >
-                {movie.poster_path && (
-                  <div className={styles.imageWrapper}>
-                    <Image
-                      className={styles.movieImage}
-                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                      alt={movie.title}
-                      layout="fill"
-                    />
-                  </div>
-                )}
-                <p>{movie.title}</p>
+                <Card movie={movie} />
               </li>
             ))}
           </ul>
         ) : (
           <p>No movies found. Try selecting a mood!</p>
+        )}
+        {setSelectedMovieDetails && (
+          <MovieDetails
+            movie={selectedMovieDetails}
+            onClose={handleCloseDetails}
+          />
         )}
         <div
           style={{

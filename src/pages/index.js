@@ -88,7 +88,6 @@ export default function Home() {
                     marginRight: `${cardMargin}px`,
                     flex: "0 0 auto",
                     width: `${cardWidth}px`,
-                    cursor: "pointer",
                   }}
                 >
                   <Card key={movie.id} movie={movie} />

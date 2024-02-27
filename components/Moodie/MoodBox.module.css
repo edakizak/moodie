@@ -100,10 +100,7 @@
 .moviecontainer {
   list-style: none;
   margin: 20px;
-  /* padding: 20px; */
-  /* border: 1px solid #ddd; */
   border-radius: 8px;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   transition: all 0.3s ease;
   flex: 0 1 300px;
   overflow: hidden;
@@ -116,12 +113,10 @@
 }
 
 .movieul {
-  display: flex; /* Use flexbox for horizontal layout */
-  width: calc(100% * (movies.length / 3)); /* Set width based on movie count */
-  transform: translateX(
-    -${activeIndex * 100 / 3}%
-  ); /* Move the window to show the correct movies */
-  transition: transform 0.3s ease-in-out; /* Smooth transition for movement */
+  display: flex;
+  width: calc(100% * (movies.length / 3));
+  transform: translateX(-${activeIndex * 100 / 3}%);
+  transition: transform 0.3s ease-in-out;
 }
 .movieli {
   width: 33.333%; /* Each movie takes up a third of the container */
