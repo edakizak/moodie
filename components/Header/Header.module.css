@@ -21,7 +21,6 @@
     9px 9px 0 rgb(3, 7, 137), 11px 11px 0 rgb(1, 5, 115);
   letter-spacing: 6px;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 
