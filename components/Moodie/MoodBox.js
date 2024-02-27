@@ -33,13 +33,13 @@ export default function SearchBox({ movie }) {
 
   return (
     <div>
-      <p>"Hey there! How's your vibe today? 🎬🍿 Choose your current</p>
+      <p>Hey there! How&apos;s your vibe today? 🎬🍿 Choose your current</p>
       <select value={mood} onChange={handleMoodChange}>
         <option value="">mood</option>
         <option value="bored">Bored</option>
         <option value="sad">Sad</option>
       </select>
-      <p>Let the movie magic begin!Your film fest awaits!"</p>
+      <p>Let the movie magic begin!Your film fest awaits!</p>
       <div>
         {movies.length > 0 ? (
           <ul>
