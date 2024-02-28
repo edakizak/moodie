@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./MoodOptions.module.css";
+import Tag from "../Tag/Tag";
 
-export default function MoodOptions({ onMoodChange }) {
+export default function MoodOptions({ onMoodChange, genres }) {
   const [mood, setMood] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -34,7 +35,10 @@ export default function MoodOptions({ onMoodChange }) {
           {moodOptions.map((option) => (
             <li
               key={option.value}
-              onClick={() => handleMoodChange(option.value)}
+              onClick={() => {
+                handleMoodChange(option.value);
+                setIsOpen(false);
+              }}
               className={styles.dropdownItem}
             >
               {option.label}
@@ -42,7 +46,11 @@ export default function MoodOptions({ onMoodChange }) {
           ))}
         </ul>
       )}
+      <div className={styles.tagsContainer}>
+        {genres?.map((genre) => (
+          <Tag key={genre.id} genre={genre.name} />
+        ))}
+      </div>
     </div>
-    // </div>
   );
 }
