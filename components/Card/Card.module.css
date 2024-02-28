@@ -4,6 +4,8 @@
   border-radius: 8px;
   transition: all 0.3s ease;
   flex: 0 1 300px;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .cardContainer:hover {

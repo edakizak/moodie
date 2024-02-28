@@ -117,3 +117,17 @@
 
 .movieli:hover {
 }
+
+.genre {
+  background-color: blue;
+  color: white;
+  margin-left: 40px;
+  padding: 16px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  font-family: "Utendo Light";
+  position: relative;
+  display: inline-block;
+  border-radius: 30px;
+  margin-top: 30px;
+}

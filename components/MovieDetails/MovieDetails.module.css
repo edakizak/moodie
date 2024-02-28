@@ -55,12 +55,18 @@
   background-color: #000000;
   color: white;
   border-radius: 20px;
-  padding: 10px 16px;
-  font-size: 1rem;
+  padding: 8px 16px;
+  font-size: 0.9rem;
   cursor: pointer;
   float: right;
   border: none;
   font-family: "Utendo Light";
+  margin-bottom: 20px;
+  width: 80px;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: rgb(179, 176, 176);
 }
 
 .detailsContainer::after {

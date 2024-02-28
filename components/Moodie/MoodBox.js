@@ -28,7 +28,7 @@ export default function MoodBox() {
     28: "Action",
     35: "Comedy",
     16: "Fantasy",
-    12: "Music",
+    12: "Adventure",
     14: "Fantasy",
     10402: "Music",
     36: "History",
@@ -54,8 +54,10 @@ export default function MoodBox() {
 
     setMovies(data);
     if (data.length > 0 && data[0].genre_ids) {
-      const genres = data[0].genre_ids.map((id) => genreNames[id]);
-      setMovieGenre(genres.join(","));
+      const filteredGenres = data[0].genre_ids
+        .filter((id) => genreNames[id])
+        .map((id) => genreNames[id]);
+      setMovieGenre(filteredGenres.join(" | "));
     }
   };
 
@@ -79,15 +81,15 @@ export default function MoodBox() {
         <p className={styles.paragraph3}>Your film fest awaits!</p>
       </div>
       {movies.length > 0 ? (
-        <>
-          <h1>{movieGenre}</h1>
+        <div>
+          <h1 className={styles.genre}>{movieGenre}</h1>
           <Carousel
             movies={movies}
             fetchMovieDetails={fetchMovieDetails}
             selectedMovieDetails={selectedMovieDetails}
             activeMovie={activeMovie}
           />
-        </>
+        </div>
       ) : (
         <TopRatedMovies />
       )}
