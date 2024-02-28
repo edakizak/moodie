@@ -57,7 +57,7 @@ export default function SearchBox({ movie }) {
       Math.min(nextActiveIndex + 1, movies.length - 2)
     );
   };
-  const cardWidth = 500;
+  const cardWidth = 450;
   const cardMargin = 20;
 
   return (
@@ -118,7 +118,11 @@ export default function SearchBox({ movie }) {
             zIndex: 2,
           }}
         >
-          <PrevButton handlePrev={handlePrev} disabled={activeIndex === 0} />
+          {/* <PrevButton handlePrev={handlePrev} disabled={activeIndex === 0} /> */}
+          <PrevButton
+            handlePrev={mood ? handlePrev : undefined}
+            disabled={activeIndex === 0 || !mood}
+          />
         </div>
         {movies.length > 0 ? (
           <ul
@@ -163,9 +167,13 @@ export default function SearchBox({ movie }) {
             zIndex: 2,
           }}
         >
-          <NextButton
+          {/* <NextButton
             handleNext={handleNext}
             disabled={activeIndex >= movies.length - 3}
+          /> */}
+          <NextButton
+            handleNext={mood ? handleNext : undefined}
+            disabled={activeIndex >= (mood ? movies.length - 3 : 0)}
           />
         </div>
       </div>

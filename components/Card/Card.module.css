@@ -37,7 +37,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5); /* transparent background */
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
   width: 100%;
   padding: 10px;
@@ -50,7 +50,5 @@
 
 .cardSelected,
 .cardContainer:hover {
-  transform: scale(
-    1.05
-  ); /* Kart seçildiğinde veya üzerine gelindiğinde büyüt */
+  transform: scale(1.05);
 }

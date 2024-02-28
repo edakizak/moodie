@@ -1,7 +1,10 @@
 import styles from "./MovieDetailsMore.module.css";
 import Image from "next/image";
+// import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function MovieDetailsMore({ movie }) {
+  const router = useRouter();
   if (!movie) return null;
 
   return (
@@ -14,6 +17,10 @@ export default function MovieDetailsMore({ movie }) {
         height={200}
       />
       <div className={styles.detailsContainer}>
+        <button onClick={() => router.back()} className={styles.backbutton}>
+          Back
+        </button>
+
         <h2 className={styles.title}>{movie.title}</h2>
         <p className={styles.info}>
           <strong>Release Date: </strong>

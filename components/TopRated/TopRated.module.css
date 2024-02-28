@@ -7,10 +7,6 @@
   src: url(../../public/assets/utendo/Utendo-Medium.ttf);
 }
 
-.li {
-  width: 33.333%;
-  list-style: none;
-}
 .title {
   font-family: "Utendo Light";
   margin-left: 20px;
@@ -22,14 +18,10 @@
   border-radius: 30px;
 }
 
-.container2 {
-  background-color: rgb(232, 232, 232);
-  margin: 20px;
+.li {
+  list-style: none;
   margin: 20px;
   border-radius: 8px;
   transition: all 0.3s ease;
   flex: 0 1 300px;
-}
-.ul {
-  overflow: hidden;
 }
