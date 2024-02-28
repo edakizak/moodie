@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import styles from "./MoodBox.module.css";
-import PrevButton from "../Button/PrevButton";
-import NextButton from "../Button/NextButton";
-import MovieDetails from "../MovieDetails/MovieDetails";
-import Card from "../Card/Card";
 import TopRatedMovies from "../TopRated/TopRated";
+import Carousel from "../Carousel/Carousel";
 
-export default function SearchBox({ movie }) {
+export default function SearchBox() {
   const [mood, setMood] = useState("");
   const [movies, setMovies] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(0);
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
   const [activeMovie, setActiveMovie] = useState(null);
 
@@ -46,27 +42,12 @@ export default function SearchBox({ movie }) {
   const moodPrefix = mood ? "I feel" : "How's your";
   const moodSuffix = mood ? "today." : "today?";
 
-  const handlePrev = () => {
-    // Carousel Prev
-    setActiveIndex((prevActiveIndex) => Math.max(prevActiveIndex - 1, 0));
-  };
-
-  const handleNext = () => {
-    // Carousel Next
-    setActiveIndex((nextActiveIndex) =>
-      Math.min(nextActiveIndex + 1, movies.length - 2)
-    );
-  };
-  const cardWidth = 450;
-  const cardMargin = 20;
-
   return (
     <div className={styles.container}>
       <div className={styles.headercontainer}>
         <p className={styles.paragraph1}>Hey there! 🎬 🍿</p>
         <p className={styles.paragraph2}>
           {moodPrefix}
-
           <select
             value={mood}
             onChange={handleMoodChange}
@@ -108,75 +89,16 @@ export default function SearchBox({ movie }) {
 
         <p className={styles.paragraph3}>Your film fest awaits!</p>
       </div>
-      <div style={{ display: "flex", marginTop: "20px", position: "relative" }}>
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: 0,
-            transform: "translateY(-50%)",
-            zIndex: 2,
-          }}
-        >
-          {/* <PrevButton handlePrev={handlePrev} disabled={activeIndex === 0} /> */}
-          <PrevButton
-            handlePrev={mood ? handlePrev : undefined}
-            disabled={activeIndex === 0 || !mood}
-          />
-        </div>
-        {movies.length > 0 ? (
-          <ul
-            style={{
-              display: "flex",
-              padding: 0,
-              marginLeft: `-${activeIndex * (cardWidth + cardMargin * 2)}px`, // Carousel slide
-              transition: "margin-left 0.5s",
-              overflowY: "hidden",
-              position: "relative",
-              zIndex: 0,
-            }}
-          >
-            {movies.map((movie, idx) => (
-              <li
-                key={movie.id}
-                className={styles.movieli}
-                style={{
-                  marginRight: `${cardMargin}px`,
-                  flex: "0 0 auto",
-                  width: `${cardWidth}px`,
-                  cursor: "pointer",
-                }}
-                onClick={() => fetchMovieDetails(movie.id, idx)}
-              >
-                <Card movie={movie} />
-                {activeMovie === idx && selectedMovieDetails && (
-                  <MovieDetails movie={selectedMovieDetails} />
-                )}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <TopRatedMovies />
-        )}
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            right: 0,
-            transform: "translateY(-50%)",
-            zIndex: 2,
-          }}
-        >
-          {/* <NextButton
-            handleNext={handleNext}
-            disabled={activeIndex >= movies.length - 3}
-          /> */}
-          <NextButton
-            handleNext={mood ? handleNext : undefined}
-            disabled={activeIndex >= (mood ? movies.length - 3 : 0)}
-          />
-        </div>
-      </div>
+      {movies.length > 0 ? (
+        <Carousel
+          movies={movies}
+          fetchMovieDetails={fetchMovieDetails}
+          selectedMovieDetails={selectedMovieDetails}
+          activeMovie={activeMovie}
+        />
+      ) : (
+        <TopRatedMovies />
+      )}
     </div>
   );
 }

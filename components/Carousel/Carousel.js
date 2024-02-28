@@ -1,5 +1,3 @@
-// components/Carousel/Carousel.js
-
 import React, { useState } from "react";
 import Card from "../Card/Card";
 import MovieDetails from "../MovieDetails/MovieDetails";
