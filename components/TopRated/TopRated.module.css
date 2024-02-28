@@ -8,14 +8,17 @@
 }
 
 .title {
-  font-family: "Utendo Light";
-  margin-left: 20px;
+  background-color: blue;
+  color: white;
+  margin-left: 40px;
+  padding: 16px;
   font-size: 1.2rem;
-  background-color: rgb(0, 0, 0);
-  width: 210px;
-  color: rgb(255, 255, 255);
-  padding: 5px 20px 5px 20px;
+  letter-spacing: 2px;
+  font-family: "Utendo Light";
+  position: relative;
+  display: inline-block;
   border-radius: 30px;
+  margin-top: 30px;
 }
 
 .li {

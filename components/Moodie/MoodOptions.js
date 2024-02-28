@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./MoodOptions.module.css";
-import Tag from "../Tag/Tag";
 
 export default function MoodOptions({ onMoodChange, genres }) {
   const [mood, setMood] = useState("");
@@ -25,7 +24,6 @@ export default function MoodOptions({ onMoodChange, genres }) {
   };
 
   return (
-    // <div className={styles.container}>
     <div className={styles.dropdown}>
       <button onClick={() => setIsOpen(!isOpen)} className={styles.dropbtn}>
         {mood || "✨ mood ✨"}
@@ -46,11 +44,6 @@ export default function MoodOptions({ onMoodChange, genres }) {
           ))}
         </ul>
       )}
-      <div className={styles.tagsContainer}>
-        {genres?.map((genre) => (
-          <Tag key={genre.id} genre={genre.name} />
-        ))}
-      </div>
     </div>
   );
 }

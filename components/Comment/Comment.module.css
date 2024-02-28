@@ -16,12 +16,14 @@
   font-size: 1em;
   font-weight: bold;
   color: #333;
+  font-family: "Utendo Medium";
 }
 .timestamp {
   color: #999;
   font-size: 0.85em;
   margin-top: 0px;
   margin-left: auto;
+  font-family: "Utendo Light";
 }
 
 .content {
@@ -30,6 +32,7 @@
   line-height: 1.6;
   margin-top: 8px;
   width: 100%;
+  font-family: "Utendo Medium";
 }
 
 .container2 {

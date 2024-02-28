@@ -1,27 +1,42 @@
+@font-face {
+  font-family: "Utendo Medium";
+  src: url(../../public/assets/utendo/Utendo-Medium.ttf);
+}
+
 .container {
   display: flex;
-  align-items: center;
-
-  overflow: hidden;
-  background-color: #000000; /* Dark mode compatible */
-  width: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 1000px;
+  margin: 30px auto 100px;
+}
+.backbutton {
+  background-color: red;
 }
 
 .cardImage {
   flex-shrink: 0;
-  width: 100%; /* Let the image be responsive */
-  max-width: 300px; /* Adjust the maximum width as needed */
+  width: 100%;
+  max-width: 300px;
   height: auto;
   object-fit: cover;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
 .detailsContainer {
-  padding: 20px;
+  /* padding: 20px; */
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-around; /* Distribute space around items */
-  color: #f0f0f0; /* Light text for contrast */
+  justify-content: space-around;
+  color: #252424;
+  margin-left: 30px;
+  margin-top: 0px;
 }
 
 .title,
@@ -32,24 +47,27 @@
 .runtime,
 .imdbRate {
   margin-bottom: 10px;
-  transition: color 0.3s ease; /* Smooth transition for color changes */
+  transition: color 0.3s ease;
 }
 
 .title {
-  font-size: 1.5rem; /* Larger font size for emphasis */
+  font-size: 1.5rem;
   font-weight: bold;
+  font-family: "Utendo Medium";
 }
 .genres {
   color: #007bff;
   font-weight: bold;
+  font-family: "Utendo Light";
 }
 .date {
   color: #007bff;
   font-weight: bold;
+  font-family: "Utendo Light";
 }
 
 .overview {
-  font-size: 0.9rem; /* Smaller font for less important text */
+  font-size: 0.9rem;
 }
 
 .backbutton {
@@ -58,29 +76,19 @@
   color: white;
 }
 
-/* Responsive media queries */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .container {
-    flex-direction: column; /* Stack elements on small screens */
-    align-items: stretch; /* Stretch to fill the width */
+    flex-direction: column;
   }
 
   .cardImage {
-    width: auto; /* Full width on small screens */
-    max-width: none;
-    border-top-right-radius: 12px; /* Adjusted for changed layout */
-    border-bottom-left-radius: 0;
+    width: 100%;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
   }
 
   .detailsContainer {
-    align-items: center; /* Center align text for a better look on small screens */
+    align-items: center;
     text-align: center;
   }
-}
-
-/* Hover effects for interactive elements */
-.button:hover,
-.genres:hover {
-  color: #007bff; /* Highlight color */
-  cursor: pointer;
 }
