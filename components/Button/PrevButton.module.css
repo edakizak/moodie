@@ -2,7 +2,7 @@
   background-color: white;
   border: none;
   border-radius: 50%;
-  margin: 45px;
+  margin: 35px;
   padding: 10px 12px;
   cursor: pointer;
   color: #007bff;
@@ -13,6 +13,7 @@
   transition: background-color 0.3s ease;
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
   height: 40px;
+  margin-right: 0px;
 }
 .prevbutton:hover {
   background-color: #e7f3ff;
