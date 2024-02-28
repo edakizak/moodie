@@ -9,6 +9,7 @@ export default function MoodBox() {
   const [movies, setMovies] = useState([]);
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
   const [activeMovie, setActiveMovie] = useState(null);
+  const [movieGenre, setMovieGenre] = useState("");
 
   useEffect(() => {
     if (mood) {
@@ -21,6 +22,18 @@ export default function MoodBox() {
     const details = await response.json();
     setSelectedMovieDetails(details);
     setActiveMovie(idx);
+  };
+
+  const genreNames = {
+    28: "Action",
+    35: "Comedy",
+    16: "Fantasy",
+    12: "Music",
+    14: "Fantasy",
+    10402: "Music",
+    36: "History",
+    10749: "Romance",
+    10751: "Family",
   };
 
   const fetchMovies = async (selectedMood) => {
@@ -38,7 +51,12 @@ export default function MoodBox() {
     }
 
     const data = await response.json();
+
     setMovies(data);
+    if (data.length > 0 && data[0].genre_ids) {
+      const genres = data[0].genre_ids.map((id) => genreNames[id]);
+      setMovieGenre(genres.join(","));
+    }
   };
 
   const handleMoodSelection = (selectedMood) => {
@@ -61,12 +79,15 @@ export default function MoodBox() {
         <p className={styles.paragraph3}>Your film fest awaits!</p>
       </div>
       {movies.length > 0 ? (
-        <Carousel
-          movies={movies}
-          fetchMovieDetails={fetchMovieDetails}
-          selectedMovieDetails={selectedMovieDetails}
-          activeMovie={activeMovie}
-        />
+        <>
+          <h1>{movieGenre}</h1>
+          <Carousel
+            movies={movies}
+            fetchMovieDetails={fetchMovieDetails}
+            selectedMovieDetails={selectedMovieDetails}
+            activeMovie={activeMovie}
+          />
+        </>
       ) : (
         <TopRatedMovies />
       )}
