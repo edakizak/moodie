@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./MoodBox.module.css";
 import TopRatedMovies from "../TopRated/TopRated";
 import Carousel from "../Carousel/Carousel";
+import MoodOptions from "./MoodOptions";
 
-export default function SearchBox() {
+export default function MoodBox() {
   const [mood, setMood] = useState("");
   const [movies, setMovies] = useState([]);
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
   const [activeMovie, setActiveMovie] = useState(null);
+
+  useEffect(() => {
+    if (mood) {
+      fetchMovies(mood);
+    }
+  }, [mood]);
 
   const fetchMovieDetails = async (movieId, idx) => {
     const response = await fetch(`/api/movie/${movieId}`);
@@ -34,11 +41,11 @@ export default function SearchBox() {
     setMovies(data);
   };
 
-  const handleMoodChange = (event) => {
-    const selectedMood = event.target.value;
+  const handleMoodSelection = (selectedMood) => {
     setMood(selectedMood);
     fetchMovies(selectedMood);
   };
+
   const moodPrefix = mood ? "I feel" : "How's your";
   const moodSuffix = mood ? "today." : "today?";
 
@@ -48,45 +55,9 @@ export default function SearchBox() {
         <p className={styles.paragraph1}>Hey there! 🎬 🍿</p>
         <p className={styles.paragraph2}>
           {moodPrefix}
-          <select
-            value={mood}
-            onChange={handleMoodChange}
-            className={styles.select}
-          >
-            <option value="" className={styles.option1}>
-              ✨mood✨
-            </option>
-            <option value="bored" className={styles.option2}>
-              bored 😑
-            </option>
-            <option value="joyful" className={styles.option3}>
-              joyful 🥳
-            </option>
-            <option value="curious" className={styles.option4}>
-              curious 🧐
-            </option>
-            <option value="sad" className={styles.option5}>
-              sad 😞
-            </option>
-            <option value="dreamy" className={styles.option6}>
-              dreamy 🫠
-            </option>
-            <option value="rhythmic" className={styles.option7}>
-              rhythmic 🕺🏼
-            </option>
-            <option value="nostalgic" className={styles.option8}>
-              nostalgic 📜
-            </option>
-            <option value="loving" className={styles.option9}>
-              loving 🥰
-            </option>
-            <option value="familial" className={styles.option10}>
-              familial 🧸
-            </option>
-          </select>
+          <MoodOptions onMoodChange={handleMoodSelection} />
           {moodSuffix}
         </p>
-
         <p className={styles.paragraph3}>Your film fest awaits!</p>
       </div>
       {movies.length > 0 ? (

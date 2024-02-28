@@ -8,31 +8,31 @@ export default async function handler(req, res) {
 
   let genreId;
   switch (mood) {
-    case "bored":
+    case "bored 😑":
       genreId = "28";
       break;
-    case "sad":
+    case "sad 😞":
       genreId = "35";
       break;
-    case "joyful":
+    case "joyful 🥳":
       genreId = "16";
       break;
-    case "curious":
+    case "curious 🧐":
       genreId = "12";
       break;
-    case "dreamy":
+    case "dreamy 🫠":
       genreId = "14";
       break;
-    case "rhythmic":
+    case "rhythmic 🕺🏼":
       genreId = "10402";
       break;
-    case "nostalgic":
+    case "nostalgic 📜":
       genreId = "36";
       break;
-    case "loving":
+    case "loving 🥰":
       genreId = "10749";
       break;
-    case "familial":
+    case "familial 🧸":
       genreId = "10751";
       break;
     default:

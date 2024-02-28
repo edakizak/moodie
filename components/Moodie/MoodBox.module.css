@@ -42,7 +42,9 @@
   letter-spacing: 3px;
   margin-top: 0;
 }
-
+.formcontrol {
+  background-attachment: inherit;
+}
 .select {
   background-color: transparent;
   border: none;
@@ -67,8 +69,10 @@
 .select:hover {
   color: blue;
 }
-
-/* .option1, */
+.menuItem {
+  color: red;
+}
+.option1,
 .option2,
 .option3,
 .option4,

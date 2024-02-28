@@ -11,7 +11,7 @@ export default function TopRatedMovies() {
     async function fetchTopRatedMovies() {
       const response = await fetch("/api/toprated");
       const data = await response.json();
-      setTopRatedMovies(shuffleArray(data).slice(0, 10));
+      setTopRatedMovies(shuffleArray(data).slice(0, 12));
     }
 
     fetchTopRatedMovies();
