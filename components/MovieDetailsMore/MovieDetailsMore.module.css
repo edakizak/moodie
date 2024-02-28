@@ -1,63 +1,3 @@
-/* .container {
-  display: flex;
-  align-items: flex-start;
-  max-width: 1000px;
-  margin: auto;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  background-color: black;
-  margin-bottom: 25px;
-}
-
-.detailsContainer {
-  padding: 20px;
-  flex-grow: 1; 
-  display: flex;
-  flex-direction: column;
-}
-.cardImage {
-  flex-shrink: 0;
-  width: 300px;
-  height: auto;
-  object-fit: cover;
-  border-top-left-radius: 8px; 
-  border-bottom-left-radius: 8px;
-  margin-top: 40px;
-}
-
-.title {
-  font-size: 1.2rem;
-  color: #efefef;
-  margin-bottom: 10px;
-}
-
-.overview {
-  color: #efefef;
-  line-height: 1.6;
-}
-
-.info {
-  font-weight: bold;
-  margin-top: 10px;
-  color: #efefef;
-}
-
-.genres {
-  margin-top: 5px;
-  color: #007bff;
-}
-.date {
-  margin-top: 5px;
-  color: #007bff;
-}
-
-.runtime {
-  color: #efefef;
-}
-.imdbRate {
-  color: #efefef;
-} */
-
 .container {
   display: flex;
   align-items: center;
@@ -110,6 +50,12 @@
 
 .overview {
   font-size: 0.9rem; /* Smaller font for less important text */
+}
+
+.backbutton {
+  border: none;
+  background-color: inherit;
+  color: white;
 }
 
 /* Responsive media queries */
