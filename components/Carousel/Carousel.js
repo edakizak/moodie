@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Card from "../Card/Card";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import PrevButton from "../Button/PrevButton";
@@ -12,6 +12,13 @@ export default function Carousel({
   activeMovie,
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const detailsRef = useRef(null);
+
+  useEffect(() => {
+    if (activeMovie != null && detailsRef.current) {
+      detailsRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [activeMovie]);
 
   const handlePrev = () => {
     setActiveIndex((prevActiveIndex) => Math.max(prevActiveIndex - 1, 0));
@@ -58,7 +65,9 @@ export default function Carousel({
             >
               <Card movie={movie} />
               {activeMovie === idx && selectedMovieDetails && (
-                <MovieDetails movie={selectedMovieDetails} />
+                <div ref={detailsRef}>
+                  <MovieDetails movie={selectedMovieDetails} />
+                </div>
               )}
             </li>
           ))}

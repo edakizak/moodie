@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./TopRated.module.css";
 import Carousel from "../Carousel/Carousel";
 
-export default function TopRatedMovies() {
+export default function TopRatedMovies({ movie }) {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
   const [activeMovie, setActiveMovie] = useState(null);
