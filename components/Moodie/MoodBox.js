@@ -74,15 +74,17 @@ export default function MoodBox() {
     <div className={styles.container}>
       <div className={styles.headercontainer}>
         <p className={styles.paragraph1}>Hey there! 🎬 🍿</p>
-        <span className={styles.arrowIcon}>
-          <Image
-            src="/assets/arrow.png"
-            alt="Arrow Icon"
-            width={200}
-            height={200}
-          />
-        </span>
-        <p className={styles.click}>click</p>
+        {!mood && (
+          <span className={styles.arrowIcon}>
+            <Image
+              src="/assets/arrow.png"
+              alt="Arrow Icon"
+              width={200}
+              height={200}
+            />
+          </span>
+        )}
+        {!mood && <p className={styles.click}>click</p>}
         <p className={styles.paragraph2}>
           {moodPrefix}
           <MoodOptions onMoodChange={handleMoodSelection} />
