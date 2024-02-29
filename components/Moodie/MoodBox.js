@@ -3,6 +3,7 @@ import styles from "./MoodBox.module.css";
 import TopRatedMovies from "../TopRated/TopRated";
 import Carousel from "../Carousel/Carousel";
 import MoodOptions from "./MoodOptions";
+import Image from "next/image";
 
 export default function MoodBox() {
   const [mood, setMood] = useState("");
@@ -73,6 +74,15 @@ export default function MoodBox() {
     <div className={styles.container}>
       <div className={styles.headercontainer}>
         <p className={styles.paragraph1}>Hey there! 🎬 🍿</p>
+        <span className={styles.arrowIcon}>
+          <Image
+            src="/assets/arrow.png"
+            alt="Arrow Icon"
+            width={200}
+            height={200}
+          />
+        </span>
+        <p className={styles.click}>click</p>
         <p className={styles.paragraph2}>
           {moodPrefix}
           <MoodOptions onMoodChange={handleMoodSelection} />
